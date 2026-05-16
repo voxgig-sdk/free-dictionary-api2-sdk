@@ -1,0 +1,28 @@
+# BasicLanguageFlow
+
+main: kit: flow: BasicLanguageFlow:
+{
+  entity: "language",
+  kind: "basic",
+  name: "BasicLanguageFlow",
+  step: [
+    {
+      input: {
+        ref: "language_ref01",
+        srcdatavar: "language_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-language_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLanguageFlow"
+}

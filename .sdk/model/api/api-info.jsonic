@@ -1,0 +1,30 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "support@freedictionaryapi.com"
+        name: "FreeDictionaryAPI.com"
+        url: "https://freedictionaryapi.com"
+      }
+      description: "A Free Dictionary API providing structured multilingual dictionary data sourced from Wiktionary under Creative Commons licensing."
+      license: {
+        identifier: "CC-BY-SA-4.0"
+        name: "CC BY-SA 4.0"
+        url: "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+      servers: [
+        {
+          url: "https://freedictionaryapi.com/api/v1"
+        }
+      ]
+      termsOfService: "https://freedictionaryapi.com"
+      title: "Free Dictionary API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

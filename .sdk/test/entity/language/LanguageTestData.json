@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "language": {
+      "LANGUAGE00": {
+        "id": "LANGUAGE00"
+      },
+      "LANGUAGE01": {
+        "id": "LANGUAGE01"
+      },
+      "LANGUAGE02": {
+        "id": "LANGUAGE02"
+      }
+    }
+  },
+  "new": {
+    "language": {
+      "language_ref01": {}
+    }
+  }
+}

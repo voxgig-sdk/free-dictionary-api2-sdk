@@ -1,0 +1,20 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 2
+  metrics: count: method: 2
+
+  entity: entry: {
+    path: "/entries/{language}/{word}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: language: {
+    path: "/languages": {
+      op: load: method: *GET
+    }
+  }
+
+}

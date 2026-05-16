@@ -1,0 +1,45 @@
+# Entity: language
+
+main: kit: entity: language: {
+
+  alias: field: {}
+
+  name: "language"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "pretty"
+                orig: "pretty"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/languages"
+          parts: [
+            "languages"
+          ]
+          select: {
+            exist: [
+              "pretty"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

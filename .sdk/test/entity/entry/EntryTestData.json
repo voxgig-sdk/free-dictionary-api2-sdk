@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "entry": {
+      "ENTRY00": {
+        "language": "LANGUAGE01",
+        "word": "WORD01",
+        "id": "ENTRY00"
+      },
+      "ENTRY01": {
+        "language": "LANGUAGE01",
+        "word": "WORD01",
+        "id": "ENTRY01"
+      },
+      "ENTRY02": {
+        "language": "LANGUAGE01",
+        "word": "WORD01",
+        "id": "ENTRY02"
+      }
+    }
+  },
+  "new": {
+    "entry": {
+      "entry_ref01": {}
+    }
+  }
+}
