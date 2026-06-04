@@ -74,14 +74,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'FREEDICTIONARYAPI__TEST_LANGUAGE_ENTID': {},
     'FREEDICTIONARYAPI__TEST_LIVE': 'FALSE',
-    'FREEDICTIONARYAPI__APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.FREEDICTIONARYAPI__TEST_LIVE
 
   if (live) {
     const client = new FreeDictionaryApi2SDK({
-      apikey: env.FREEDICTIONARYAPI__APIKEY,
     })
 
     let idmap: any = env['FREEDICTIONARYAPI__TEST_LANGUAGE_ENTID']

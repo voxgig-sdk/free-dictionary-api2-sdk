@@ -67,14 +67,12 @@ function language_direct_setup($mockres)
     $env = Runner::env_override([
         "FREEDICTIONARYAPI__TEST_LANGUAGE_ENTID" => [],
         "FREEDICTIONARYAPI__TEST_LIVE" => "FALSE",
-        "FREEDICTIONARYAPI__APIKEY" => "NONE",
     ]);
 
     $live = $env["FREEDICTIONARYAPI__TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["FREEDICTIONARYAPI__APIKEY"],
         ];
         $client = new FreeDictionaryApi2SDK($merged_opts);
         return [

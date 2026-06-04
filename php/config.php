@@ -20,9 +20,6 @@ class FreeDictionaryApi2Config
             ],
             "options" => [
                 "base" => "https://freedictionaryapi.com/api/v1",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

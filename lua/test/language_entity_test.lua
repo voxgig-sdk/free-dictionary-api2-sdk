@@ -91,7 +91,6 @@ function language_basic_setup(extra)
     ["FREEDICTIONARYAPI__TEST_LANGUAGE_ENTID"] = idmap,
     ["FREEDICTIONARYAPI__TEST_LIVE"] = "FALSE",
     ["FREEDICTIONARYAPI__TEST_EXPLAIN"] = "FALSE",
-    ["FREEDICTIONARYAPI__APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ function language_basic_setup(extra)
   if env["FREEDICTIONARYAPI__TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["FREEDICTIONARYAPI__APIKEY"],
       },
       extra or {},
     })

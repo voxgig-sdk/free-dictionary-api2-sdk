@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { FreeDictionaryApi2SDK } from 'free-dictionary-api2'
 
-const client = new FreeDictionaryApi2SDK({
-  apikey: process.env.FREE-DICTIONARY-API2_APIKEY,
-})
+const client = new FreeDictionaryApi2SDK({})
 ```
 
 ### 3. Load a entry
@@ -82,7 +80,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new FreeDictionaryApi2SDK({ apikey: '...' })
+const client = new FreeDictionaryApi2SDK()
 const testClient = client.tester()
 ```
 
@@ -118,7 +116,6 @@ const logger = {
 }
 
 const client = new FreeDictionaryApi2SDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -129,7 +126,6 @@ Create a `.env.local` file at the project root:
 
 ```
 FREE-DICTIONARY-API2_TEST_LIVE=TRUE
-FREE-DICTIONARY-API2_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,7 +143,6 @@ cd ts && npm test
 
 ```ts
 new FreeDictionaryApi2SDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -158,7 +153,6 @@ new FreeDictionaryApi2SDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
