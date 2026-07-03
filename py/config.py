@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://freedictionaryapi.com/api/v1",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -29,44 +32,46 @@ def make_config():
         "name": "entry",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "language",
                       "orig": "language",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "word",
                       "orig": "word",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "pretty",
                       "orig": "pretty",
                       "reqd": False,
                       "type": "`$BOOLEAN`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "translation",
                       "orig": "translation",
                       "reqd": False,
                       "type": "`$BOOLEAN`",
-                      "active": True,
                     },
                   ],
                 },
@@ -89,11 +94,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -110,18 +113,20 @@ def make_config():
         "name": "language",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "pretty",
                       "orig": "pretty",
                       "reqd": False,
                       "type": "`$BOOLEAN`",
-                      "active": True,
                     },
                   ],
                 },
@@ -139,11 +144,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

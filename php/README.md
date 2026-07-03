@@ -1,6 +1,11 @@
 # FreeDictionaryApi2 PHP SDK
 
-The PHP SDK for the FreeDictionaryApi2 API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the FreeDictionaryApi2 API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'freedictionaryapi2_sdk.php';
 
-$client = new FreeDictionaryApi2SDK([]);
+$client = new FreeDictionaryApi2SDK([
+    "apikey" => getenv("FREE-DICTIONARY-API2_APIKEY"),
+]);
 ```
 
 ### 3. Load a entry
 
 ```php
-[$result, $err] = $client->Entry(null)->load(["id" => "example_id"], null);
+[$result, $err] = $client->Entry()->load(["id" => "example_id"]);
 if ($err) { throw new \Exception($err); }
 print_r($result);
 ```
@@ -72,11 +79,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = FreeDictionaryApi2SDK::test(null, null);
+$client = FreeDictionaryApi2SDK::test();
 
-[$result, $err] = $client->FreeDictionaryApi2(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->FreeDictionaryApi2()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -111,6 +116,7 @@ Create a `.env.local` file at the project root:
 
 ```
 FREE-DICTIONARY-API2_TEST_LIVE=TRUE
+FREE-DICTIONARY-API2_APIKEY=<your-key>
 ```
 
 Then run:
@@ -133,6 +139,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

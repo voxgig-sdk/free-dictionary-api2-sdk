@@ -72,12 +72,14 @@ def entry_direct_setup(mockres)
   env = Runner.env_override({
     "FREEDICTIONARYAPI__TEST_ENTRY_ENTID" => {},
     "FREEDICTIONARYAPI__TEST_LIVE" => "FALSE",
+    "FREEDICTIONARYAPI__APIKEY" => "NONE",
   })
 
   live = env["FREEDICTIONARYAPI__TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["FREEDICTIONARYAPI__APIKEY"],
     }
     client = FreeDictionaryApi2SDK.new(merged_opts)
     return {

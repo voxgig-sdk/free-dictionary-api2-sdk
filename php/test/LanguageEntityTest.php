@@ -85,6 +85,7 @@ function language_basic_setup($extra)
         "FREEDICTIONARYAPI__TEST_LANGUAGE_ENTID" => $idmap,
         "FREEDICTIONARYAPI__TEST_LIVE" => "FALSE",
         "FREEDICTIONARYAPI__TEST_EXPLAIN" => "FALSE",
+        "FREEDICTIONARYAPI__APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function language_basic_setup($extra)
     if ($env["FREEDICTIONARYAPI__TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["FREEDICTIONARYAPI__APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -99,12 +99,14 @@ func languageDirectSetup(mockres any) *languageDirectSetupResult {
 	env := envOverride(map[string]any{
 		"FREEDICTIONARYAPI__TEST_LANGUAGE_ENTID": map[string]any{},
 		"FREEDICTIONARYAPI__TEST_LIVE":    "FALSE",
+		"FREEDICTIONARYAPI__APIKEY":       "NONE",
 	})
 
 	live := env["FREEDICTIONARYAPI__TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["FREEDICTIONARYAPI__APIKEY"],
 		}
 		client := sdk.NewFreeDictionaryApi2SDK(mergedOpts)
 

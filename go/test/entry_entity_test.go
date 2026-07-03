@@ -117,6 +117,7 @@ func entryBasicSetup(extra map[string]any) *entityTestSetup {
 		"FREEDICTIONARYAPI__TEST_ENTRY_ENTID": idmap,
 		"FREEDICTIONARYAPI__TEST_LIVE":      "FALSE",
 		"FREEDICTIONARYAPI__TEST_EXPLAIN":   "FALSE",
+		"FREEDICTIONARYAPI__APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["FREEDICTIONARYAPI__TEST_ENTRY_ENTID"])
@@ -127,6 +128,7 @@ func entryBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["FREEDICTIONARYAPI__TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["FREEDICTIONARYAPI__APIKEY"],
 			},
 			extra,
 		})

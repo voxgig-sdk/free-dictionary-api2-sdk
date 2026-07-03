@@ -59,12 +59,14 @@ def _language_direct_setup(mockres):
     env = runner.env_override({
         "FREEDICTIONARYAPI__TEST_LANGUAGE_ENTID": {},
         "FREEDICTIONARYAPI__TEST_LIVE": "FALSE",
+        "FREEDICTIONARYAPI__APIKEY": "NONE",
     })
 
     live = env.get("FREEDICTIONARYAPI__TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("FREEDICTIONARYAPI__APIKEY"),
         }
         client = FreeDictionaryApi2SDK(merged_opts)
         return {

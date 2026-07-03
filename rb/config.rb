@@ -15,6 +15,9 @@ module FreeDictionaryApi2Config
       },
       "options" => {
         "base" => "https://freedictionaryapi.com/api/v1",
+        "auth" => {
+          "prefix" => "Bearer",
+        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -29,44 +32,46 @@ module FreeDictionaryApi2Config
           "name" => "entry",
           "op" => {
             "load" => {
+              "input" => "data",
               "name" => "load",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "params" => [
                       {
+                        "active" => true,
                         "kind" => "param",
                         "name" => "language",
                         "orig" => "language",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                       {
+                        "active" => true,
                         "kind" => "param",
                         "name" => "word",
                         "orig" => "word",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                     "query" => [
                       {
+                        "active" => true,
                         "kind" => "query",
                         "name" => "pretty",
                         "orig" => "pretty",
                         "reqd" => false,
                         "type" => "`$BOOLEAN`",
-                        "active" => true,
                       },
                       {
+                        "active" => true,
                         "kind" => "query",
                         "name" => "translation",
                         "orig" => "translation",
                         "reqd" => false,
                         "type" => "`$BOOLEAN`",
-                        "active" => true,
                       },
                     ],
                   },
@@ -89,11 +94,9 @@ module FreeDictionaryApi2Config
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "load",
             },
           },
@@ -110,18 +113,20 @@ module FreeDictionaryApi2Config
           "name" => "language",
           "op" => {
             "load" => {
+              "input" => "data",
               "name" => "load",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "query" => [
                       {
+                        "active" => true,
                         "kind" => "query",
                         "name" => "pretty",
                         "orig" => "pretty",
                         "reqd" => false,
                         "type" => "`$BOOLEAN`",
-                        "active" => true,
                       },
                     ],
                   },
@@ -139,11 +144,9 @@ module FreeDictionaryApi2Config
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "load",
             },
           },
