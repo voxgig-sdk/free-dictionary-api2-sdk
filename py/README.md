@@ -10,7 +10,7 @@ The Python SDK for the FreeDictionaryApi2 API — an entity-oriented client foll
 
 ## Install
 ```bash
-pip install free-dictionary-api2-sdk
+pip install voxgig-sdk-free-dictionary-api2
 ```
 
 Or install from source:

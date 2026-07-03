@@ -10,7 +10,7 @@ The PHP SDK for the FreeDictionaryApi2 API — an entity-oriented client using P
 
 ## Install
 ```bash
-composer require voxgig/free-dictionary-api2-sdk
+composer require voxgig-sdk/free-dictionary-api2
 ```
 
 

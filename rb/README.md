@@ -10,13 +10,13 @@ The Ruby SDK for the FreeDictionaryApi2 API — an entity-oriented client using 
 
 ## Install
 ```bash
-gem install free-dictionary-api2-sdk
+gem install voxgig-sdk-free-dictionary-api2
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "free-dictionary-api2-sdk"
+gem "voxgig-sdk-free-dictionary-api2"
 ```
 
 Then run:
