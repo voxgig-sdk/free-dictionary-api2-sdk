@@ -45,6 +45,7 @@ class LanguageEntity
     end
   end
 
+  # @return [Language, Hash] the current Language data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class LanguageEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Language fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Language.
+  #
+  # @param reqmatch [LanguageLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Language, Hash] the loaded Language; raises FreeDictionaryApi2Error on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

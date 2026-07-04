@@ -9,12 +9,9 @@ The Lua SDK for the FreeDictionaryApi2 API — an entity-oriented client using L
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-free-dictionary-api2
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/free-dictionary-api2-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("free-dictionary-api2_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("FREE-DICTIONARY-API2_APIKEY"),
-})
+local client = sdk.new()
 ```
 
-### 3. Load a entry
+### 3. Load an entry
 
 ```lua
-local result, err = client:Entry():load({ id = "example_id" })
+local result, err = client:entry():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:FreeDictionaryApi2():load({ id = "test01" })
+local result, err = client:entry():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +115,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-FREE-DICTIONARY-API2_TEST_LIVE=TRUE
-FREE-DICTIONARY-API2_APIKEY=<your-key>
+FREE_DICTIONARY_API2_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -230,7 +223,7 @@ API path: `/languages`
 
 ### Entry
 
-Create an instance: `const entry = client.Entry()`
+Create an instance: `const entry = client.entry`
 
 #### Operations
 
@@ -241,13 +234,13 @@ Create an instance: `const entry = client.Entry()`
 #### Example: Load
 
 ```ts
-const entry = await client.Entry().load({ id: 'entry_id' })
+const entry = await client.entry.load({ id: 'entry_id' })
 ```
 
 
 ### Language
 
-Create an instance: `const language = client.Language()`
+Create an instance: `const language = client.language`
 
 #### Operations
 
@@ -258,7 +251,7 @@ Create an instance: `const language = client.Language()`
 #### Example: Load
 
 ```ts
-const language = await client.Language().load({ id: 'language_id' })
+const language = await client.language.load({ id: 'language_id' })
 ```
 
 
@@ -333,11 +326,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local entry = client:entry()
+entry:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- entry:data_get() now returns the loaded entry data
+-- entry:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

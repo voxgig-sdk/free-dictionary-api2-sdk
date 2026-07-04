@@ -3,6 +3,8 @@
 import { EntryEntity } from './entity/EntryEntity'
 import { LanguageEntity } from './entity/LanguageEntity'
 
+export type * from './FreeDictionaryApi2Types'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class FreeDictionaryApi2SDK {
 
 
 
+  _entry?: EntryEntity
+
+  // Idiomatic facade: `client.entry.list()` / `client.entry.load({ id })`.
+  get entry(): EntryEntity {
+    return (this._entry ??= new EntryEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.entry` instead. */
   Entry(data?: any) {
     const self = this
     return new EntryEntity(self,data)
   }
 
 
+  _language?: LanguageEntity
+
+  // Idiomatic facade: `client.language.list()` / `client.language.load({ id })`.
+  get language(): LanguageEntity {
+    return (this._language ??= new LanguageEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.language` instead. */
   Language(data?: any) {
     const self = this
     return new LanguageEntity(self,data)

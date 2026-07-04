@@ -49,8 +49,7 @@ class TestLanguageEntity:
         # LOAD
         language_ref01_ent = client.Language(None)
         language_ref01_match_dt0 = {}
-        language_ref01_data_dt0_loaded, err = language_ref01_ent.load(language_ref01_match_dt0, None)
-        assert err is None
+        language_ref01_data_dt0_loaded = language_ref01_ent.load(language_ref01_match_dt0, None)
         assert language_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _language_basic_setup(extra):
         "FREEDICTIONARYAPI__TEST_LANGUAGE_ENTID": idmap,
         "FREEDICTIONARYAPI__TEST_LIVE": "FALSE",
         "FREEDICTIONARYAPI__TEST_EXPLAIN": "FALSE",
-        "FREEDICTIONARYAPI__APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _language_basic_setup(extra):
     if env.get("FREEDICTIONARYAPI__TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FREEDICTIONARYAPI__APIKEY"),
             },
             extra or {},
         ])

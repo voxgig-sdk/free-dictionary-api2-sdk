@@ -42,8 +42,7 @@ class LanguageEntityTest < Minitest::Test
     # LOAD
     language_ref01_ent = client.Language(nil)
     language_ref01_match_dt0 = {}
-    language_ref01_data_dt0_loaded, err = language_ref01_ent.load(language_ref01_match_dt0, nil)
-    assert_nil err
+    language_ref01_data_dt0_loaded = language_ref01_ent.load(language_ref01_match_dt0, nil)
     assert !language_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def language_basic_setup(extra)
     "FREEDICTIONARYAPI__TEST_LANGUAGE_ENTID" => idmap,
     "FREEDICTIONARYAPI__TEST_LIVE" => "FALSE",
     "FREEDICTIONARYAPI__TEST_EXPLAIN" => "FALSE",
-    "FREEDICTIONARYAPI__APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def language_basic_setup(extra)
   if env["FREEDICTIONARYAPI__TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FREEDICTIONARYAPI__APIKEY"],
       },
       extra || {},
     ])

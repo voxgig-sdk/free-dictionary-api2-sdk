@@ -73,14 +73,12 @@ function entry_direct_setup(mockres)
   local env = runner.env_override({
     ["FREEDICTIONARYAPI__TEST_ENTRY_ENTID"] = {},
     ["FREEDICTIONARYAPI__TEST_LIVE"] = "FALSE",
-    ["FREEDICTIONARYAPI__APIKEY"] = "NONE",
   })
 
   local live = env["FREEDICTIONARYAPI__TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["FREEDICTIONARYAPI__APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

@@ -49,8 +49,7 @@ class TestEntryEntity:
         # LOAD
         entry_ref01_ent = client.Entry(None)
         entry_ref01_match_dt0 = {}
-        entry_ref01_data_dt0_loaded, err = entry_ref01_ent.load(entry_ref01_match_dt0, None)
-        assert err is None
+        entry_ref01_data_dt0_loaded = entry_ref01_ent.load(entry_ref01_match_dt0, None)
         assert entry_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _entry_basic_setup(extra):
         "FREEDICTIONARYAPI__TEST_ENTRY_ENTID": idmap,
         "FREEDICTIONARYAPI__TEST_LIVE": "FALSE",
         "FREEDICTIONARYAPI__TEST_EXPLAIN": "FALSE",
-        "FREEDICTIONARYAPI__APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _entry_basic_setup(extra):
     if env.get("FREEDICTIONARYAPI__TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FREEDICTIONARYAPI__APIKEY"),
             },
             extra or {},
         ])

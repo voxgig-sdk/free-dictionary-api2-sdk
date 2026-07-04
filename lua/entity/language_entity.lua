@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch LanguageLoadMatch
+---@param ctrl? table
+---@return Language
+---@return string? err
 function LanguageEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

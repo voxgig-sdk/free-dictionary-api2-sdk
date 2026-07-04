@@ -245,11 +245,17 @@ func (sdk *FreeDictionaryApi2SDK) Direct(fetchargs map[string]any) (map[string]a
 }
 
 
+// Entry returns a Entry entity bound to this client.
+// Idiomatic usage: client.Entry(nil).List(nil, nil) or
+// client.Entry(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FreeDictionaryApi2SDK) Entry(data map[string]any) FreeDictionaryApi2Entity {
 	return NewEntryEntityFunc(sdk, data)
 }
 
 
+// Language returns a Language entity bound to this client.
+// Idiomatic usage: client.Language(nil).List(nil, nil) or
+// client.Language(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FreeDictionaryApi2SDK) Language(data map[string]any) FreeDictionaryApi2Entity {
 	return NewLanguageEntityFunc(sdk, data)
 }

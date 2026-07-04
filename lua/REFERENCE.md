@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## EntryEntity
 
 ```lua
-local entry = client:Entry(nil)
+local entry = client:entry(nil)
 ```
 
 ### Operations
@@ -98,7 +97,7 @@ local entry = client:Entry(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Entry():load({ id = "entry_id" })
+local result, err = client:entry():load({ id = "entry_id" })
 ```
 
 ### Common Methods
@@ -134,7 +133,7 @@ Return the entity name.
 ## LanguageEntity
 
 ```lua
-local language = client:Language(nil)
+local language = client:language(nil)
 ```
 
 ### Operations
@@ -144,7 +143,7 @@ local language = client:Language(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Language():load({ id = "language_id" })
+local result, err = client:language():load({ id = "language_id" })
 ```
 
 ### Common Methods

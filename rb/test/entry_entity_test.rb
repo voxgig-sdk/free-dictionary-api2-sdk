@@ -42,8 +42,7 @@ class EntryEntityTest < Minitest::Test
     # LOAD
     entry_ref01_ent = client.Entry(nil)
     entry_ref01_match_dt0 = {}
-    entry_ref01_data_dt0_loaded, err = entry_ref01_ent.load(entry_ref01_match_dt0, nil)
-    assert_nil err
+    entry_ref01_data_dt0_loaded = entry_ref01_ent.load(entry_ref01_match_dt0, nil)
     assert !entry_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def entry_basic_setup(extra)
     "FREEDICTIONARYAPI__TEST_ENTRY_ENTID" => idmap,
     "FREEDICTIONARYAPI__TEST_LIVE" => "FALSE",
     "FREEDICTIONARYAPI__TEST_EXPLAIN" => "FALSE",
-    "FREEDICTIONARYAPI__APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def entry_basic_setup(extra)
   if env["FREEDICTIONARYAPI__TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FREEDICTIONARYAPI__APIKEY"],
       },
       extra || {},
     ])

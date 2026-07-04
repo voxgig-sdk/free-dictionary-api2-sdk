@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `FreeDictionaryApi2SDK.test()`.
 ## EntryEntity
 
 ```ts
-const entry = client.Entry()
+const entry = client.entry
 ```
 
 ### Operations
@@ -132,7 +131,7 @@ const entry = client.Entry()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Entry().load({ id: 'entry_id' })
+const result = await client.entry.load({ id: 'entry_id' })
 ```
 
 ### Common Methods
@@ -166,7 +165,7 @@ Return a copy of the entity options.
 ## LanguageEntity
 
 ```ts
-const language = client.Language()
+const language = client.language
 ```
 
 ### Operations
@@ -176,7 +175,7 @@ const language = client.Language()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Language().load({ id: 'language_id' })
+const result = await client.language.load({ id: 'language_id' })
 ```
 
 ### Common Methods
