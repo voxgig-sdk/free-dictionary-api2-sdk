@@ -33,10 +33,12 @@ client = FreeDictionaryApi2SDK()
 
 ### 3. Load an entry
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.entry.load({"id": "example_id"})
-    print(result)
+    entry = client.Entry().load({"id": "example_id"})
+    print(entry)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FreeDictionaryApi2SDK.test()
 
-result = client.entry.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+entry = client.Entry().load({"id": "test01"})
+# entry contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -161,7 +164,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Entry` | `(data) -> EntryEntity` | Create a Entry entity instance. |
+| `Entry` | `(data) -> EntryEntity` | Create an Entry entity instance. |
 | `Language` | `(data) -> LanguageEntity` | Create a Language entity instance. |
 
 ### Entity interface
@@ -227,7 +230,7 @@ API path: `/languages`
 
 ### Entry
 
-Create an instance: `const entry = client.entry`
+Create an instance: `entry = client.Entry()`
 
 #### Operations
 
@@ -237,14 +240,14 @@ Create an instance: `const entry = client.entry`
 
 #### Example: Load
 
-```ts
-const entry = await client.entry.load({ id: 'entry_id' })
+```python
+entry = client.Entry().load({"id": "entry_id"})
 ```
 
 
 ### Language
 
-Create an instance: `const language = client.language`
+Create an instance: `language = client.Language()`
 
 #### Operations
 
@@ -254,8 +257,8 @@ Create an instance: `const language = client.language`
 
 #### Example: Load
 
-```ts
-const language = await client.language.load({ id: 'language_id' })
+```python
+language = client.Language().load({"id": "language_id"})
 ```
 
 
@@ -329,7 +332,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-entry = client.entry
+entry = client.Entry()
 entry.load({"id": "example_id"})
 
 # entry.data_get() now returns the loaded entry data

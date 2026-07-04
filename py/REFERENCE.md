@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## EntryEntity
 
 ```python
-entry = client.entry
+entry = client.Entry()
 ```
 
 ### Operations
@@ -94,7 +94,7 @@ entry = client.entry
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.entry.load({"id": "entry_id"})
+result = client.Entry().load({"id": "entry_id"})
 ```
 
 ### Common Methods
@@ -129,7 +129,7 @@ Return the entity name.
 ## LanguageEntity
 
 ```python
-language = client.language
+language = client.Language()
 ```
 
 ### Operations
@@ -139,7 +139,7 @@ language = client.language
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.language.load({"id": "language_id"})
+result = client.Language().load({"id": "language_id"})
 ```
 
 ### Common Methods

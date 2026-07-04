@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## EntryEntity
 
 ```ruby
-entry = client.entry
+entry = client.Entry
 ```
 
 ### Operations
@@ -100,7 +100,7 @@ entry = client.entry
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.entry.load({ "id" => "entry_id" })
+result = client.Entry.load({ "id" => "entry_id" })
 ```
 
 ### Common Methods
@@ -136,7 +136,7 @@ Return the entity name.
 ## LanguageEntity
 
 ```ruby
-language = client.language
+language = client.Language
 ```
 
 ### Operations
@@ -146,7 +146,7 @@ language = client.language
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.language.load({ "id" => "language_id" })
+result = client.Language.load({ "id" => "language_id" })
 ```
 
 ### Common Methods

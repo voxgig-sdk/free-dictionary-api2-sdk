@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## EntryEntity
 
 ```php
-$entry = $client->entry();
+$entry = $client->Entry();
 ```
 
 ### Operations
@@ -99,7 +99,7 @@ $entry = $client->entry();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->entry()->load(["id" => "entry_id"]);
+$result = $client->Entry()->load(["id" => "entry_id"]);
 ```
 
 ### Common Methods
@@ -135,7 +135,7 @@ Return the entity name.
 ## LanguageEntity
 
 ```php
-$language = $client->language();
+$language = $client->Language();
 ```
 
 ### Operations
@@ -145,7 +145,7 @@ $language = $client->language();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->language()->load(["id" => "language_id"]);
+$result = $client->Language()->load(["id" => "language_id"]);
 ```
 
 ### Common Methods

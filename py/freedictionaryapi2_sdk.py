@@ -220,41 +220,21 @@ class FreeDictionaryApi2SDK:
         }
 
 
-    @property
-    def entry(self):
-        """Idiomatic facade: client.entry.list() / client.entry.load({"id": ...})."""
-        from entity.entry_entity import EntryEntity
-        cached = getattr(self, "_entry", None)
-        if cached is None:
-            cached = EntryEntity(self, None)
-            self._entry = cached
-        return cached
-
-    def Entry(self, data=None):
-        # Deprecated: use client.entry instead.
+    def Entry(self, data=None) -> "EntryEntity":
+        """Entity factory: client.Entry().list({}) / client.Entry().load({"id": ...})."""
         from entity.entry_entity import EntryEntity
         return EntryEntity(self, data)
 
 
-    @property
-    def language(self):
-        """Idiomatic facade: client.language.list() / client.language.load({"id": ...})."""
-        from entity.language_entity import LanguageEntity
-        cached = getattr(self, "_language", None)
-        if cached is None:
-            cached = LanguageEntity(self, None)
-            self._language = cached
-        return cached
-
-    def Language(self, data=None):
-        # Deprecated: use client.language instead.
+    def Language(self, data=None) -> "LanguageEntity":
+        """Entity factory: client.Language().list({}) / client.Language().load({"id": ...})."""
         from entity.language_entity import LanguageEntity
         return LanguageEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "FreeDictionaryApi2SDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class FreeDictionaryApi2SDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.entry_entity import EntryEntity
+    from entity.language_entity import LanguageEntity

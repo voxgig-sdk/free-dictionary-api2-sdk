@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## EntryEntity
 
 ```lua
-local entry = client:entry(nil)
+local entry = client:Entry(nil)
 ```
 
 ### Operations
@@ -97,7 +97,7 @@ local entry = client:entry(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:entry():load({ id = "entry_id" })
+local result, err = client:Entry():load({ id = "entry_id" })
 ```
 
 ### Common Methods
@@ -133,7 +133,7 @@ Return the entity name.
 ## LanguageEntity
 
 ```lua
-local language = client:language(nil)
+local language = client:Language(nil)
 ```
 
 ### Operations
@@ -143,7 +143,7 @@ local language = client:language(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:language():load({ id = "language_id" })
+local result, err = client:Language():load({ id = "language_id" })
 ```
 
 ### Common Methods

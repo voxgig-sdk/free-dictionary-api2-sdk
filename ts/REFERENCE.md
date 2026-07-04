@@ -121,7 +121,7 @@ Alias for `FreeDictionaryApi2SDK.test()`.
 ## EntryEntity
 
 ```ts
-const entry = client.entry
+const entry = client.Entry()
 ```
 
 ### Operations
@@ -131,7 +131,7 @@ const entry = client.entry
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.entry.load({ id: 'entry_id' })
+const result = await client.Entry().load({ id: 'entry_id' })
 ```
 
 ### Common Methods
@@ -165,7 +165,7 @@ Return a copy of the entity options.
 ## LanguageEntity
 
 ```ts
-const language = client.language
+const language = client.Language()
 ```
 
 ### Operations
@@ -175,7 +175,7 @@ const language = client.language
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.language.load({ id: 'language_id' })
+const result = await client.Language().load({ id: 'language_id' })
 ```
 
 ### Common Methods

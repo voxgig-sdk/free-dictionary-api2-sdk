@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:entry():list() / client:entry():load({ id = ... })
-function FreeDictionaryApi2SDK:entry(data)
+-- Idiomatic facade: client:Entry():list() / client:Entry():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FreeDictionaryApi2SDK:Entry(data)
   local EntityMod = require("entity.entry_entity")
   if data == nil then
     if self._entry == nil then
@@ -256,15 +257,10 @@ function FreeDictionaryApi2SDK:entry(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:entry() instead.
-function FreeDictionaryApi2SDK:Entry(data)
-  local EntityMod = require("entity.entry_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:language():list() / client:language():load({ id = ... })
-function FreeDictionaryApi2SDK:language(data)
+-- Idiomatic facade: client:Language():list() / client:Language():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FreeDictionaryApi2SDK:Language(data)
   local EntityMod = require("entity.language_entity")
   if data == nil then
     if self._language == nil then
@@ -272,12 +268,6 @@ function FreeDictionaryApi2SDK:language(data)
     end
     return self._language
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:language() instead.
-function FreeDictionaryApi2SDK:Language(data)
-  local EntityMod = require("entity.language_entity")
   return EntityMod.new(self, data)
 end
 

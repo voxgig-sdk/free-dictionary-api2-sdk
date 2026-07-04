@@ -32,8 +32,9 @@ client = FreeDictionaryApi2SDK.new
 
 ```ruby
 begin
-  result = client.entry.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Entry record (raises on error).
+  entry = client.Entry.load({ "id" => "example_id" })
+  puts entry
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = FreeDictionaryApi2SDK.test
+client = FreeDictionaryApi2SDK.test({
+  "entity" => { "entry" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.entry.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+entry = client.Entry.load({ "id" => "test01" })
+puts entry
 ```
 
 ### Use a custom fetch function
@@ -162,7 +167,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Entry` | `(data) -> EntryEntity` | Create a Entry entity instance. |
+| `Entry` | `(data) -> EntryEntity` | Create an Entry entity instance. |
 | `Language` | `(data) -> LanguageEntity` | Create a Language entity instance. |
 
 ### Entity interface
@@ -227,7 +232,7 @@ API path: `/languages`
 
 ### Entry
 
-Create an instance: `const entry = client.entry`
+Create an instance: `entry = client.Entry`
 
 #### Operations
 
@@ -237,14 +242,15 @@ Create an instance: `const entry = client.entry`
 
 #### Example: Load
 
-```ts
-const entry = await client.entry.load({ id: 'entry_id' })
+```ruby
+# load returns the bare Entry record (raises on error).
+entry = client.Entry.load({ "id" => "entry_id" })
 ```
 
 
 ### Language
 
-Create an instance: `const language = client.language`
+Create an instance: `language = client.Language`
 
 #### Operations
 
@@ -254,8 +260,9 @@ Create an instance: `const language = client.language`
 
 #### Example: Load
 
-```ts
-const language = await client.language.load({ id: 'language_id' })
+```ruby
+# load returns the bare Language record (raises on error).
+language = client.Language.load({ "id" => "language_id" })
 ```
 
 
@@ -330,7 +337,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-entry = client.entry
+entry = client.Entry
 entry.load({ "id" => "example_id" })
 
 # entry.data_get now returns the loaded entry data
