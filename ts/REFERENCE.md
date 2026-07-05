@@ -131,7 +131,7 @@ const entry = client.Entry()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Entry().load({ id: 'entry_id' })
+const result = await client.Entry().load()
 ```
 
 ### Common Methods
@@ -175,7 +175,7 @@ const language = client.Language()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Language().load({ id: 'language_id' })
+const result = await client.Language().load()
 ```
 
 ### Common Methods

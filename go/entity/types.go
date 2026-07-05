@@ -22,8 +22,7 @@ type EntryLoadMatch struct {
 type Language struct {
 }
 
-// LanguageLoadMatch mirrors the language fields as an all-optional match
-// filter (Go analog of Partial<Language>).
+// LanguageLoadMatch is the typed request payload for Language.LoadTyped.
 type LanguageLoadMatch struct {
 }
 

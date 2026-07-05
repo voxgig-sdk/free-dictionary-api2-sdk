@@ -16,5 +16,6 @@ export interface EntryLoadMatch {
 export interface Language {
 }
 
-export type LanguageLoadMatch = Partial<Language>
+export interface LanguageLoadMatch {
+}
 

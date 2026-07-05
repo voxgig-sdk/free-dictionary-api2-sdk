@@ -8,7 +8,7 @@ Complete API reference for the FreeDictionaryApi2 PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/free-dictionary-api2_sdk.php';
+require_once __DIR__ . '/freedictionaryapi2_sdk.php';
 
 $client = new FreeDictionaryApi2SDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `EntryEntity` instance. Pass `null` for no initial data.
 
 Create a new `LanguageEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): FreeDictionaryApi2Utility`
 
 Return a copy of the SDK utility object.
 
@@ -99,24 +99,24 @@ $entry = $client->Entry();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Entry()->load(["id" => "entry_id"]);
+$result = $client->Entry()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -125,7 +125,7 @@ Set the entity match criteria.
 Create a new `EntryEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -145,24 +145,24 @@ $language = $client->Language();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Language()->load(["id" => "language_id"]);
+$result = $client->Language()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -171,7 +171,7 @@ Set the entity match criteria.
 Create a new `LanguageEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

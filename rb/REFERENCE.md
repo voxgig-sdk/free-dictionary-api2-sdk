@@ -8,7 +8,7 @@ Complete API reference for the FreeDictionaryApi2 Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'free-dictionary-api2_sdk'
+require_relative 'FreeDictionaryApi2_sdk'
 
 client = FreeDictionaryApi2SDK.new(options)
 ```
@@ -100,7 +100,7 @@ entry = client.Entry
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Entry.load({ "id" => "entry_id" })
+result = client.Entry.load()
 ```
 
 ### Common Methods
@@ -146,7 +146,7 @@ language = client.Language
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Language.load({ "id" => "language_id" })
+result = client.Language.load()
 ```
 
 ### Common Methods

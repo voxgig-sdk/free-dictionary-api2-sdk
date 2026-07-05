@@ -67,10 +67,12 @@ class EntryEntity
   
   # Load a single Entry.
   #
-  # @param reqmatch [EntryLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [EntryLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.Entry.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [Entry, Hash] the loaded Entry; raises FreeDictionaryApi2Error on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

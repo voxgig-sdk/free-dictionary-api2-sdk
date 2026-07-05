@@ -221,13 +221,13 @@ class FreeDictionaryApi2SDK:
 
 
     def Entry(self, data=None) -> "EntryEntity":
-        """Entity factory: client.Entry().list({}) / client.Entry().load({"id": ...})."""
+        """Entity factory: client.Entry().list() / client.Entry().load({"id": ...})."""
         from entity.entry_entity import EntryEntity
         return EntryEntity(self, data)
 
 
     def Language(self, data=None) -> "LanguageEntity":
-        """Entity factory: client.Language().list({}) / client.Language().load({"id": ...})."""
+        """Entity factory: client.Language().list() / client.Language().load({"id": ...})."""
         from entity.language_entity import LanguageEntity
         return LanguageEntity(self, data)
 

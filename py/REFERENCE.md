@@ -8,7 +8,7 @@ Complete API reference for the FreeDictionaryApi2 Python SDK.
 ### Constructor
 
 ```python
-from free-dictionary-api2_sdk import FreeDictionaryApi2SDK
+from freedictionaryapi2_sdk import FreeDictionaryApi2SDK
 
 client = FreeDictionaryApi2SDK(options)
 ```
@@ -94,7 +94,7 @@ entry = client.Entry()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Entry().load({"id": "entry_id"})
+result = client.Entry().load()
 ```
 
 ### Common Methods
@@ -139,7 +139,7 @@ language = client.Language()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Language().load({"id": "language_id"})
+result = client.Language().load()
 ```
 
 ### Common Methods

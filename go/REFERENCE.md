@@ -104,7 +104,7 @@ entry := client.Entry(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Entry(nil).Load(map[string]any{"id": "entry_id"}, nil)
+result, err := client.Entry(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ language := client.Language(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Language(nil).Load(map[string]any{"id": "language_id"}, nil)
+result, err := client.Language(nil).Load(nil, nil)
 ```
 
 ### Common Methods

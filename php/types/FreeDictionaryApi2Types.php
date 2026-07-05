@@ -29,7 +29,7 @@ class Language
 {
 }
 
-/** Match filter for Language#load (any subset of Language fields). */
+/** Request payload for Language#load. */
 class LanguageLoadMatch
 {
 }
