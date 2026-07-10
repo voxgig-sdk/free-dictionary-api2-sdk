@@ -33,10 +33,12 @@ $client = new FreeDictionaryApi2SDK();
 
 ### 3. Load an entry
 
+Entry is nested under language, so provide the `language`.
+
 ```php
 try {
     // load() returns the bare Entry record (throws on error).
-    $entry = $client->Entry()->load();
+    $entry = $client->Entry()->load(["language" => "example_language", "word" => "example_word"]);
     print_r($entry);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -278,7 +280,7 @@ Create an instance: `$entry = $client->Entry();`
 
 ```php
 // load() returns the bare Entry record (throws on error).
-$entry = $client->Entry()->load();
+$entry = $client->Entry()->load(["language" => "language", "word" => "word"]);
 ```
 
 

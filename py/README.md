@@ -38,11 +38,12 @@ client = FreeDictionaryApi2SDK()
 
 ### 3. Load an entry
 
+Entry is nested under language, so provide the `language`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    entry = client.Entry().load()
+    entry = client.Entry().load({"language": "example_language", "word": "example_word"})
     print(entry)
 except Exception as err:
     print(f"load failed: {err}")
@@ -273,7 +274,7 @@ Create an instance: `entry = client.Entry()`
 #### Example: Load
 
 ```python
-entry = client.Entry().load()
+entry = client.Entry().load({"language": "language", "word": "word"})
 ```
 
 

@@ -99,7 +99,7 @@ $entry = $client->Entry();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Entry()->load();
+$result = $client->Entry()->load(["language" => "language", "word" => "word"]);
 ```
 
 ### Common Methods

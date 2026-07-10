@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 entry := client.Entry(nil)
+fmt.Println(entry.GetName()) // "entry"
 ```
 
 ### Operations
@@ -104,7 +105,11 @@ entry := client.Entry(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Entry(nil).Load(nil, nil)
+result, err := client.Entry(nil).Load(map[string]any{"language": "language", "word": "word"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -135,6 +140,7 @@ Return the entity name.
 
 ```go
 language := client.Language(nil)
+fmt.Println(language.GetName()) // "language"
 ```
 
 ### Operations
@@ -145,6 +151,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Language(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

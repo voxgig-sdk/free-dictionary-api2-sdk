@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single entry — the value is the loaded record.
-    entry, err := client.Entry(nil).Load(nil, nil)
+    entry, err := client.Entry(nil).Load(map[string]any{"language": "example_language", "word": "example_word"}, nil)
     if err != nil {
         panic(err)
     }
@@ -291,7 +291,7 @@ Create an instance: `entry := client.Entry(nil)`
 #### Example: Load
 
 ```go
-entry, err := client.Entry(nil).Load(nil, nil)
+entry, err := client.Entry(nil).Load(map[string]any{"language": "language", "word": "word"}, nil)
 if err != nil {
     panic(err)
 }

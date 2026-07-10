@@ -21,10 +21,10 @@ main: {
           url: "https://freedictionaryapi.com/api/v1"
         }
       ]
+      summary: "A Free Dictionary API providing structured multilingual dictionary data sourced from Wiktionary under Creative Commons licensing."
       termsOfService: "https://freedictionaryapi.com"
       title: "Free Dictionary API"
       version: "1.0.0"
+      website: "https://freedictionaryapi.com"
     }
   }
-}
-

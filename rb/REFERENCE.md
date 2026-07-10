@@ -100,7 +100,7 @@ entry = client.Entry
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Entry.load()
+result = client.Entry.load({ "language" => "language", "word" => "word" })
 ```
 
 ### Common Methods

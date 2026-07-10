@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -325,14 +322,17 @@
           "name": "CC BY-SA 4.0",
           "url": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "url": "https://freedictionaryapi.com/api/v1"
           }
         ],
+        "summary": "A Free Dictionary API providing structured multilingual dictionary data sourced from Wiktionary under Creative Commons licensing.",
         "termsOfService": "https://freedictionaryapi.com",
         "title": "Free Dictionary API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://freedictionaryapi.com"
       },
       "option": {},
       "target": {
@@ -385,6 +385,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -435,6 +438,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

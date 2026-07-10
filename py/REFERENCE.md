@@ -94,7 +94,7 @@ entry = client.Entry()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Entry().load()
+result = client.Entry().load({"language": "language", "word": "word"})
 ```
 
 ### Common Methods

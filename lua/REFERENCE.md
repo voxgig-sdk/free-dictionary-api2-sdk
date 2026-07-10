@@ -97,7 +97,7 @@ local entry = client:Entry(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Entry():load()
+local result, err = client:Entry():load({ language = "language", word = "word" })
 ```
 
 ### Common Methods

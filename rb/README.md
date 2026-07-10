@@ -32,10 +32,12 @@ client = FreeDictionaryApi2SDK.new
 
 ### 3. Load an entry
 
+Entry is nested under language, so provide the `language`.
+
 ```ruby
 begin
   # load returns the bare Entry record (raises on error).
-  entry = client.Entry.load()
+  entry = client.Entry.load({ "language" => "example_language", "word" => "example_word" })
   puts entry
 rescue => err
   warn "load failed: #{err}"
@@ -268,7 +270,7 @@ Create an instance: `entry = client.Entry`
 
 ```ruby
 # load returns the bare Entry record (raises on error).
-entry = client.Entry.load()
+entry = client.Entry.load({ "language" => "language", "word" => "word" })
 ```
 
 

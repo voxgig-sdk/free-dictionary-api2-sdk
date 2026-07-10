@@ -35,8 +35,10 @@ local client = sdk.new()
 
 ### 3. Load an entry
 
+Entry is nested under language, so provide the `language`.
+
 ```lua
-local entry, err = client:Entry():load()
+local entry, err = client:Entry():load({ language = "example_language", word = "example_word" })
 if err then error(err) end
 print(entry)
 ```
@@ -258,7 +260,7 @@ Create an instance: `local entry = client:Entry(nil)`
 #### Example: Load
 
 ```lua
-local entry, err = client:Entry():load()
+local entry, err = client:Entry():load({ language = "language", word = "word" })
 ```
 
 
