@@ -1,4 +1,4 @@
--- ProjectName SDK configuration
+-- FreeDictionaryApi2 SDK configuration
 
 local function make_config()
   return {

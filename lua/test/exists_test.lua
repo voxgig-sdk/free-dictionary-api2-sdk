@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- FreeDictionaryApi2 SDK exists test
 
 local sdk = require("free-dictionary-api2_sdk")
 
