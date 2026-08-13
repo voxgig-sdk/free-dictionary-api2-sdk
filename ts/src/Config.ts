@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'FreeDictionaryApi2',
   }
 
 
@@ -105,6 +105,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/entries/{language}/{word}",
               "parts": [
@@ -160,6 +161,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/languages",
               "parts": [

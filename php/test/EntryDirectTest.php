@@ -76,11 +76,11 @@ function entry_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "FREEDICTIONARYAPI__TEST_ENTRY_ENTID" => [],
-        "FREEDICTIONARYAPI__TEST_LIVE" => "FALSE",
+        "FREE_DICTIONARY_API2_TEST_ENTRY_ENTID" => [],
+        "FREE_DICTIONARY_API2_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["FREEDICTIONARYAPI__TEST_LIVE"] === "TRUE";
+    $live = $env["FREE_DICTIONARY_API2_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

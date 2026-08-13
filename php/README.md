@@ -37,7 +37,7 @@ Entry is nested under language, so provide the `language`.
 
 ```php
 try {
-    // load() returns the bare Entry record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Entry record (throws on error).
     $entry = $client->Entry()->load(["language" => "example_language", "word" => "example_word"]);
     print_r($entry);
 } catch (\Throwable $err) {
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $entry = $client->Entry()->load();
+    $entry = $client->Entry()->load(["language" => "example", "word" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,8 +125,9 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = FreeDictionaryApi2SDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$entry = $client->Entry()->load();
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$entry = $client->Entry()->load(["language" => "example", "word" => "example"]);
 print_r($entry);
 ```
 
@@ -225,7 +226,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -279,7 +280,7 @@ Create an instance: `$entry = $client->Entry();`
 #### Example: Load
 
 ```php
-// load() returns the bare Entry record (throws on error).
+// load() returns the ENTITY — call data_get() for the Entry record (throws on error).
 $entry = $client->Entry()->load(["language" => "language", "word" => "word"]);
 ```
 
@@ -297,7 +298,7 @@ Create an instance: `$language = $client->Language();`
 #### Example: Load
 
 ```php
-// load() returns the bare Language record (throws on error).
+// load() returns the ENTITY — call data_get() for the Language record (throws on error).
 $language = $client->Language()->load();
 ```
 
@@ -379,7 +380,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $entry = $client->Entry();
-$entry->load();
+$entry->load(["language" => "example", "word" => "example"]);
 
 // $entry->data_get() now returns the entry data from the last load
 // $entry->match_get() returns the last match criteria

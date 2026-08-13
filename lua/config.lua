@@ -73,6 +73,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/entries/{language}/{word}",
                 ["parts"] = {
@@ -128,6 +129,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/languages",
                 ["parts"] = {

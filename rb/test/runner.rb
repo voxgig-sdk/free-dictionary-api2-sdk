@@ -23,8 +23,8 @@ module FreeDictionaryApi2TestRunner
   end
 
   def self.env_override(m)
-    live = getenv("FREEDICTIONARYAPI2_TEST_LIVE")
-    override = getenv("FREEDICTIONARYAPI2_TEST_OVERRIDE")
+    live = getenv("FREE_DICTIONARY_API2_TEST_LIVE")
+    override = getenv("FREE_DICTIONARY_API2_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module FreeDictionaryApi2TestRunner
       end
     end
 
-    explain = getenv("FREEDICTIONARYAPI2_TEST_EXPLAIN")
-    m["FREEDICTIONARYAPI2_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("FREE_DICTIONARY_API2_TEST_EXPLAIN")
+    m["FREE_DICTIONARY_API2_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

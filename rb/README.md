@@ -36,7 +36,7 @@ Entry is nested under language, so provide the `language`.
 
 ```ruby
 begin
-  # load returns the bare Entry record (raises on error).
+  # load returns the ENTITY — call data_get for the Entry record (raises on error).
   entry = client.Entry.load({ "language" => "example_language", "word" => "example_word" })
   puts entry
 rescue => err
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  entry = client.Entry.load()
+  entry = client.Entry.load({ "language" => "example", "word" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -119,8 +119,9 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = FreeDictionaryApi2SDK.test
 
-# Entity ops return the bare mock record (raises on error).
-entry = client.Entry.load()
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+entry = client.Entry.load({ "language" => "example", "word" => "example" })
 puts entry
 ```
 
@@ -269,7 +270,7 @@ Create an instance: `entry = client.Entry`
 #### Example: Load
 
 ```ruby
-# load returns the bare Entry record (raises on error).
+# load returns the ENTITY — call data_get for the Entry record (raises on error).
 entry = client.Entry.load({ "language" => "language", "word" => "word" })
 ```
 
@@ -287,7 +288,7 @@ Create an instance: `language = client.Language`
 #### Example: Load
 
 ```ruby
-# load returns the bare Language record (raises on error).
+# load returns the ENTITY — call data_get for the Language record (raises on error).
 language = client.Language.load()
 ```
 
@@ -369,7 +370,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 entry = client.Entry
-entry.load()
+entry.load({ "language" => "example", "word" => "example" })
 
 # entry.data_get now returns the entry data from the last load
 # entry.match_get returns the last match criteria

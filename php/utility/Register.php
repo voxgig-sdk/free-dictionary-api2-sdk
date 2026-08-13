@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ FreeDictionaryApi2Utility::setRegistrar(function (FreeDictionaryApi2Utility $u):
     $u->prepare_params = [FreeDictionaryApi2PrepareParams::class, 'call'];
     $u->prepare_path = [FreeDictionaryApi2PreparePath::class, 'call'];
     $u->prepare_query = [FreeDictionaryApi2PrepareQuery::class, 'call'];
+    $u->graphql_body = [FreeDictionaryApi2Graphql::class, 'body'];
+    $u->graphql_errors = [FreeDictionaryApi2Graphql::class, 'errors'];
     $u->result_basic = [FreeDictionaryApi2ResultBasic::class, 'call'];
     $u->result_body = [FreeDictionaryApi2ResultBody::class, 'call'];
     $u->result_headers = [FreeDictionaryApi2ResultHeaders::class, 'call'];

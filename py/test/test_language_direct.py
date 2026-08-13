@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from freedictionaryapi2_sdk.utility.voxgig_struct import voxgig_struct as vs
 from freedictionaryapi2_sdk import FreeDictionaryApi2SDK
-from core import helpers
+from freedictionaryapi2_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _language_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "FREEDICTIONARYAPI__TEST_LANGUAGE_ENTID": {},
-        "FREEDICTIONARYAPI__TEST_LIVE": "FALSE",
+        "FREE_DICTIONARY_API2_TEST_LANGUAGE_ENTID": {},
+        "FREE_DICTIONARY_API2_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("FREEDICTIONARYAPI__TEST_LIVE") == "TRUE"
+    live = env.get("FREE_DICTIONARY_API2_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

@@ -60,11 +60,11 @@ function language_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["FREEDICTIONARYAPI__TEST_LANGUAGE_ENTID"] = {},
-    ["FREEDICTIONARYAPI__TEST_LIVE"] = "FALSE",
+    ["FREE_DICTIONARY_API2_TEST_LANGUAGE_ENTID"] = {},
+    ["FREE_DICTIONARY_API2_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["FREEDICTIONARYAPI__TEST_LIVE"] == "TRUE"
+  local live = env["FREE_DICTIONARY_API2_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

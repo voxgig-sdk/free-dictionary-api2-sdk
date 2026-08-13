@@ -23,7 +23,7 @@ support (`load`):
 
 ```ts
 const client = new FreeDictionaryApi2SDK()
-const entry = await client.Entry().load()
+const entry = await client.Entry().load({ language: "example", word: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = FreeDictionaryApi2SDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = FreeDictionaryApi2SDK.test({
+  entity: {
+    entry: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const entry = await client.Entry().load({ language: 'example_language', word: 'example_word' })
-// entry is a bare Entry populated with mock data
+// entry is the Entry entity, populated with mock data
+// — call entry.data() for the record itself
 console.log(entry)
 ```
 
@@ -187,7 +196,7 @@ require_once 'freedictionaryapi2_sdk.php';
 $client = new FreeDictionaryApi2SDK();
 
 
-// Load a specific entry (returns the bare record; throws on error)
+// Load a specific entry (returns the ENTITY; call data_get() for the record; throws on error)
 $entry = $client->Entry()->load(["language" => "example_language", "word" => "example_word"]);
 print_r($entry);
 ```
@@ -218,7 +227,7 @@ require_relative "FreeDictionaryApi2_sdk"
 client = FreeDictionaryApi2SDK.new
 
 
-# Load a specific entry (returns the bare record; raises on error)
+# Load a specific entry (returns the ENTITY; call data_get for the record)
 entry = client.Entry.load({ "language" => "example_language", "word" => "example_word" })
 puts entry
 ```
@@ -352,6 +361,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://freedictionaryapi.com](https://freedictionaryapi.com)
 

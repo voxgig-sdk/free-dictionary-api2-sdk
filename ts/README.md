@@ -57,7 +57,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const entry = await client.Entry().load()
+  const entry = await client.Entry().load({ language: "example", word: "example" })
   console.log(entry)
 } catch (err) {
   console.error('load failed:', err)
@@ -124,8 +124,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = FreeDictionaryApi2SDK.test()
 
-const entry = await client.Entry().load()
-// entry is a bare entity populated with mock response data
+const entry = await client.Entry().load({ language: 'example_language', word: 'example_word' })
+// entry is the entity, populated with mock response data
+// — call entry.data() for the record itself
 console.log(entry)
 ```
 
@@ -144,7 +145,7 @@ Entity instances remember their last match and data:
 const entity = client.Entry()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ language: 'example_language', word: 'example_word' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -412,7 +413,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const entry = client.Entry()
-await entry.load()
+await entry.load({ language: "example", word: "example" })
 
 // entry.data() now returns the entry data from the last `load`
 // entry.match() returns the last match criteria

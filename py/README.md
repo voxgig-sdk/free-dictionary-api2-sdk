@@ -39,7 +39,7 @@ client = FreeDictionaryApi2SDK()
 ### 3. Load an entry
 
 Entry is nested under language, so provide the `language`.
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -56,7 +56,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    entry = client.Entry().load()
+    entry = client.Entry().load({"language": "example", "word": "example"})
     print(entry)
 except Exception as err:
     print(f"load failed: {err}")
@@ -123,8 +123,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FreeDictionaryApi2SDK.test()
 
-# Entity ops return the bare record and raise on error.
-entry = client.Entry().load()
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+entry = client.Entry().load({"language": "example", "word": "example"})
 # entry contains the mock response record
 ```
 
@@ -220,7 +221,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -371,7 +372,7 @@ stores the returned data and match criteria internally.
 
 ```python
 entry = client.Entry()
-entry.load()
+entry.load({"language": "example", "word": "example"})
 
 # entry.data_get() now returns the entry data from the last load
 # entry.match_get() returns the last match criteria

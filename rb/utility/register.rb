@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ FreeDictionaryApi2Utility.registrar = ->(u) {
   u.prepare_params = FreeDictionaryApi2Utilities::PrepareParams
   u.prepare_path = FreeDictionaryApi2Utilities::PreparePath
   u.prepare_query = FreeDictionaryApi2Utilities::PrepareQuery
+  u.graphql_body = FreeDictionaryApi2Utilities::GraphqlBody
+  u.graphql_errors = FreeDictionaryApi2Utilities::GraphqlErrors
   u.result_basic = FreeDictionaryApi2Utilities::ResultBasic
   u.result_body = FreeDictionaryApi2Utilities::ResultBody
   u.result_headers = FreeDictionaryApi2Utilities::ResultHeaders

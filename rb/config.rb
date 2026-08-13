@@ -74,6 +74,7 @@ module FreeDictionaryApi2Config
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/entries/{language}/{word}",
                   "parts" => [
@@ -129,6 +130,7 @@ module FreeDictionaryApi2Config
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/languages",
                   "parts" => [
