@@ -1,5 +1,8 @@
 -- FreeDictionaryApi2 SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -32,43 +35,34 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "language",
                       ["orig"] = "language",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "word",
                       ["orig"] = "word",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "pretty",
                       ["orig"] = "pretty",
-                      ["reqd"] = false,
                       ["type"] = "`$BOOLEAN`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "translation",
                       ["orig"] = "translation",
-                      ["reqd"] = false,
                       ["type"] = "`$BOOLEAN`",
                     },
                   },
@@ -93,10 +87,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -116,15 +108,12 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "pretty",
                       ["orig"] = "pretty",
-                      ["reqd"] = false,
                       ["type"] = "`$BOOLEAN`",
                     },
                   },
@@ -144,10 +133,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {

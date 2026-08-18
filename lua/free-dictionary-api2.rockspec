@@ -23,6 +23,7 @@ build = {
   modules = {
     ["free-dictionary-api2_sdk"] = "free-dictionary-api2_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

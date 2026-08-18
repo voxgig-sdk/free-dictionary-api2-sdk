@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://freedictionaryapi.com/api/v1',
+    base: "https://freedictionaryapi.com/api/v1",
 
     headers: {
       "content-type": "application/json"
@@ -64,43 +64,34 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "language",
                     "orig": "language",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "word",
                     "orig": "word",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "pretty",
                     "orig": "pretty",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "translation",
                     "orig": "translation",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   }
                 ]
@@ -124,11 +115,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -148,15 +137,12 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "pretty",
                     "orig": "pretty",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   }
                 ]
@@ -175,11 +161,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

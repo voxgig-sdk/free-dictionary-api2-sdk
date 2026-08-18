@@ -40,7 +40,7 @@ class FreeDictionaryApi2SDK
         $utility = new FreeDictionaryApi2Utility();
         $this->_utility = $utility;
 
-        $config = FreeDictionaryApi2Config::make_config();
+        $config = FreeDictionaryApi2Config::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

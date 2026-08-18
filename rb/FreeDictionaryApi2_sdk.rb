@@ -28,7 +28,7 @@ class FreeDictionaryApi2SDK
     utility = FreeDictionaryApi2Utility.new
     @_utility = utility
 
-    config = FreeDictionaryApi2Config.make_config
+    config = FreeDictionaryApi2Config.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
