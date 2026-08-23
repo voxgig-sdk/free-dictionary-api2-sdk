@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "FreeDictionaryApi2",
+      slug = "free-dictionary-api2",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {

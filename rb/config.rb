@@ -19,6 +19,9 @@ module FreeDictionaryApi2Config
     {
       "main" => {
         "name" => "FreeDictionaryApi2",
+        "slug" => "free-dictionary-api2",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {

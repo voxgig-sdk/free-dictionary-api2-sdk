@@ -33,6 +33,9 @@ class FreeDictionaryApi2Config
         return [
             "main" => [
                 "name" => "FreeDictionaryApi2",
+                "slug" => "free-dictionary-api2",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
