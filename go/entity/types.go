@@ -20,6 +20,8 @@ type Entry struct {
 type EntryLoadMatch struct {
 	Language string `json:"language"`
 	Word string `json:"word"`
+	Pretty *bool `json:"pretty,omitempty"`
+	Translation *bool `json:"translation,omitempty"`
 }
 
 // Language is the typed data model for the language entity.
@@ -28,6 +30,7 @@ type Language struct {
 
 // LanguageLoadMatch is the typed request payload for Language.LoadTyped.
 type LanguageLoadMatch struct {
+	Pretty *bool `json:"pretty,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

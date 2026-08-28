@@ -19,9 +19,17 @@ end
 #
 # @!attribute [rw] word
 #   @return [String]
+#
+# @!attribute [rw] pretty
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] translation
+#   @return [Boolean, nil]
 EntryLoadMatch = Struct.new(
   :language,
   :word,
+  :pretty,
+  :translation,
   keyword_init: true
 )
 
@@ -30,6 +38,11 @@ class Language
 end
 
 # Request payload for Language#load.
-class LanguageLoadMatch
-end
+#
+# @!attribute [rw] pretty
+#   @return [Boolean, nil]
+LanguageLoadMatch = Struct.new(
+  :pretty,
+  keyword_init: true
+)
 

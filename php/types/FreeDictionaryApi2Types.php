@@ -22,6 +22,8 @@ class EntryLoadMatch
 {
     public string $language;
     public string $word;
+    public ?bool $pretty = null;
+    public ?bool $translation = null;
 }
 
 /** Language entity data model. */
@@ -32,5 +34,6 @@ class Language
 /** Request payload for Language#load. */
 class LanguageLoadMatch
 {
+    public ?bool $pretty = null;
 }
 

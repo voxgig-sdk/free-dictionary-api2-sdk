@@ -11,10 +11,13 @@
 ---@class EntryLoadMatch
 ---@field language string
 ---@field word string
+---@field pretty? boolean
+---@field translation? boolean
 
 ---@class Language
 
 ---@class LanguageLoadMatch
+---@field pretty? boolean
 
 local M = {}
 

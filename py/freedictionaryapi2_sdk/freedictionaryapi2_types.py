@@ -20,14 +20,19 @@ class Entry(TypedDict):
     pass
 
 
-class EntryLoadMatch(TypedDict):
+class EntryLoadMatchRequired(TypedDict):
     language: str
     word: str
+
+
+class EntryLoadMatch(EntryLoadMatchRequired, total=False):
+    pretty: bool
+    translation: bool
 
 
 class Language(TypedDict):
     pass
 
 
-class LanguageLoadMatch(TypedDict):
-    pass
+class LanguageLoadMatch(TypedDict, total=False):
+    pretty: bool
