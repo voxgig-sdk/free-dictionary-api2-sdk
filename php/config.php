@@ -57,7 +57,24 @@ class FreeDictionaryApi2Config
             ],
             "entity" => [
         'entry' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'from' => [
+              'word' => 'word',
+            ],
+            'name' => 'id',
+            'parts' => [
+              'language',
+              'word',
+            ],
+            'sep' => '/',
+          ],
           'name' => 'entry',
           'op' => [
             'load' => [
@@ -100,10 +117,16 @@ class FreeDictionaryApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/entries/{language}/{word}',
-                  'parts' => [
-                    'entries',
-                    '{language}',
-                    '{word}',
+                  'segments' => [
+                    [
+                      'lit' => 'entries',
+                    ],
+                    [
+                      'var' => 'language',
+                    ],
+                    [
+                      'var' => 'word',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -116,6 +139,11 @@ class FreeDictionaryApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'entries',
+                    '{language}',
+                    '{word}',
                   ],
                 ],
               ],
@@ -151,8 +179,10 @@ class FreeDictionaryApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/languages',
-                  'parts' => [
-                    'languages',
+                  'segments' => [
+                    [
+                      'lit' => 'languages',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -162,6 +192,9 @@ class FreeDictionaryApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'languages',
                   ],
                 ],
               ],

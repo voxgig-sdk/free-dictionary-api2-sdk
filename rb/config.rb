@@ -43,7 +43,24 @@ module FreeDictionaryApi2Config
       },
       "entity" => {
         "entry" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
+          "id" => {
+            "field" => "id",
+            "from" => {
+              "word" => "word",
+            },
+            "name" => "id",
+            "parts" => [
+              "language",
+              "word",
+            ],
+            "sep" => "/",
+          },
           "name" => "entry",
           "op" => {
             "load" => {
@@ -86,10 +103,16 @@ module FreeDictionaryApi2Config
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/entries/{language}/{word}",
-                  "parts" => [
-                    "entries",
-                    "{language}",
-                    "{word}",
+                  "segments" => [
+                    {
+                      "lit" => "entries",
+                    },
+                    {
+                      "var" => "language",
+                    },
+                    {
+                      "var" => "word",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -103,6 +126,11 @@ module FreeDictionaryApi2Config
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "entries",
+                    "{language}",
+                    "{word}",
+                  ],
                 },
               ],
             },
@@ -137,8 +165,10 @@ module FreeDictionaryApi2Config
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/languages",
-                  "parts" => [
-                    "languages",
+                  "segments" => [
+                    {
+                      "lit" => "languages",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -149,6 +179,9 @@ module FreeDictionaryApi2Config
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "languages",
+                  ],
                 },
               ],
             },

@@ -48,9 +48,13 @@ class TestEntryEntity:
 
         # LOAD
         entry_ref01_ent = client.Entry(None)
-        entry_ref01_match_dt0 = {}
+        entry_ref01_match_dt0 = {
+            "id": entry_ref01_data["id"],
+        }
         entry_ref01_data_dt0_loaded = entry_ref01_ent.load(entry_ref01_match_dt0, None)
-        assert entry_ref01_data_dt0_loaded is not None
+        entry_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(entry_ref01_data_dt0_loaded))
+        assert entry_ref01_data_dt0_load_result is not None
+        assert entry_ref01_data_dt0_load_result["id"] == entry_ref01_data["id"]
 
 
 
@@ -99,6 +103,10 @@ def _entry_basic_setup(extra):
 
     if env.get("FREE_DICTIONARY_API2_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
             },
             extra or {},

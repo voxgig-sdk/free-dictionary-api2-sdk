@@ -15,6 +15,7 @@ declare(strict_types=1);
 /** Entry entity data model. */
 class Entry
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Entry#load. */

@@ -23,8 +23,10 @@ main: kit: entity: language: {
           }
           method: "GET"
           orig: "/languages"
-          parts: [
-            "languages"
+          segments: [
+            {
+              lit: "languages"
+            }
           ]
           select: {
             exist: [

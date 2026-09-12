@@ -93,6 +93,12 @@ same parameters as `direct()`. Raises on error.
 entry = client.Entry
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`

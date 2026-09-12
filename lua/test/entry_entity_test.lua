@@ -44,10 +44,14 @@ describe("EntryEntity", function()
 
     -- LOAD
     local entry_ref01_ent = client:Entry(nil)
-    local entry_ref01_match_dt0 = {}
+    local entry_ref01_match_dt0 = {
+      id = entry_ref01_data["id"],
+    }
     local entry_ref01_data_dt0_loaded, err = entry_ref01_ent:load(entry_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(entry_ref01_data_dt0_loaded)
+    local entry_ref01_data_dt0_load_result = helpers.to_map(type(entry_ref01_data_dt0_loaded) == 'table' and entry_ref01_data_dt0_loaded.data_get and entry_ref01_data_dt0_loaded:data_get() or entry_ref01_data_dt0_loaded)
+    assert.is_not_nil(entry_ref01_data_dt0_load_result)
+    assert.are.equal(entry_ref01_data_dt0_load_result["id"], entry_ref01_data["id"])
 
   end)
 end)
@@ -101,6 +105,9 @@ function entry_basic_setup(extra)
 
   if env["FREE_DICTIONARY_API2_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
       },
       extra or {},

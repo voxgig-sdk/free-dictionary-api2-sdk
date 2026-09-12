@@ -9,8 +9,13 @@
 # annotations document the shapes. Do not edit by hand.
 
 # Entry entity data model.
-class Entry
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Entry = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Entry#load.
 #

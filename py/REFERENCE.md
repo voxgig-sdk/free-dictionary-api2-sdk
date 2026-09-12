@@ -87,6 +87,12 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 entry = client.Entry()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`

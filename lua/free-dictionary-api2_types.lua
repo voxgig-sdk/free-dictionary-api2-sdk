@@ -7,6 +7,7 @@
 -- edit by hand.
 
 ---@class Entry
+---@field id? string
 
 ---@class EntryLoadMatch
 ---@field language string

@@ -35,7 +35,24 @@ func MakeConfig() map[string]any {
 		},
 		"entity": map[string]any{
 			"entry": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"from": map[string]any{
+						"word": "word",
+					},
+					"name": "id",
+					"parts": []any{
+						"language",
+						"word",
+					},
+					"sep": "/",
+				},
 				"name": "entry",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -78,10 +95,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/entries/{language}/{word}",
-								"parts": []any{
-									"entries",
-									"{language}",
-									"{word}",
+								"segments": []any{
+									map[string]any{
+										"lit": "entries",
+									},
+									map[string]any{
+										"var": "language",
+									},
+									map[string]any{
+										"var": "word",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -94,6 +117,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"entries",
+									"{language}",
+									"{word}",
 								},
 							},
 						},
@@ -129,8 +157,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/languages",
-								"parts": []any{
-									"languages",
+								"segments": []any{
+									map[string]any{
+										"lit": "languages",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -140,6 +170,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"languages",
 								},
 							},
 						},
@@ -151,6 +184,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

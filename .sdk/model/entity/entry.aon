@@ -4,6 +4,27 @@ main: kit: entity: entry: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    from: {
+      word: "word"
+    }
+    name: "id"
+    parts: [
+      "language"
+      "word"
+    ]
+    sep: "/"
+  }
+
   name: "entry"
   op: {
     load: {
@@ -46,10 +67,16 @@ main: kit: entity: entry: {
           }
           method: "GET"
           orig: "/entries/{language}/{word}"
-          parts: [
-            "entries"
-            "{language}"
-            "{word}"
+          segments: [
+            {
+              lit: "entries"
+            }
+            {
+              var: "language"
+            }
+            {
+              var: "word"
+            }
           ]
           select: {
             exist: [

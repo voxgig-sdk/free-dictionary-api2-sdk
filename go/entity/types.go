@@ -14,6 +14,7 @@ import (
 
 // Entry is the typed data model for the entry entity.
 type Entry struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // EntryLoadMatch is the typed request payload for Entry.LoadTyped.

@@ -31,7 +31,24 @@ local function make_config()
     },
     entity = {
       ["entry"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["from"] = {
+            ["word"] = "word",
+          },
+          ["name"] = "id",
+          ["parts"] = {
+            "language",
+            "word",
+          },
+          ["sep"] = "/",
+        },
         ["name"] = "entry",
         ["op"] = {
           ["load"] = {
@@ -74,10 +91,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/entries/{language}/{word}",
-                ["parts"] = {
-                  "entries",
-                  "{language}",
-                  "{word}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "entries",
+                  },
+                  {
+                    ["var"] = "language",
+                  },
+                  {
+                    ["var"] = "word",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -90,6 +113,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "entries",
+                  "{language}",
+                  "{word}",
                 },
               },
             },
@@ -125,8 +153,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/languages",
-                ["parts"] = {
-                  "languages",
+                ["segments"] = {
+                  {
+                    ["lit"] = "languages",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -136,6 +166,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "languages",
                 },
               },
             },

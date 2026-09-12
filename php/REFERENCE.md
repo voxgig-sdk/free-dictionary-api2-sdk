@@ -92,6 +92,12 @@ Prepare a fetch definition without sending the request. Returns the
 $entry = $client->Entry();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`

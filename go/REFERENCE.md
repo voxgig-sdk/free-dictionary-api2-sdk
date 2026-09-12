@@ -98,6 +98,12 @@ entry := client.Entry(nil)
 fmt.Println(entry.GetName()) // "entry"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`

@@ -16,8 +16,8 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Entry(TypedDict):
-    pass
+class Entry(TypedDict, total=False):
+    id: str
 
 
 class EntryLoadMatchRequired(TypedDict):

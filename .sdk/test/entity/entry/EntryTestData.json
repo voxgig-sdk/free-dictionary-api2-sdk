@@ -2,19 +2,19 @@
   "existing": {
     "entry": {
       "ENTRY00": {
+        "id": "ENTRY00",
         "language": "LANGUAGE01",
-        "word": "WORD01",
-        "id": "ENTRY00"
+        "word": "WORD01"
       },
       "ENTRY01": {
+        "id": "ENTRY01",
         "language": "LANGUAGE01",
-        "word": "WORD01",
-        "id": "ENTRY01"
+        "word": "WORD01"
       },
       "ENTRY02": {
+        "id": "ENTRY02",
         "language": "LANGUAGE01",
-        "word": "WORD01",
-        "id": "ENTRY02"
+        "word": "WORD01"
       }
     }
   },
