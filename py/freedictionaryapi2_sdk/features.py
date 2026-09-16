@@ -1,12 +1,18 @@
 # FreeDictionaryApi2 SDK feature factory
 
 from freedictionaryapi2_sdk.feature.base_feature import FreeDictionaryApi2BaseFeature
+from freedictionaryapi2_sdk.feature.ratelimit_feature import FreeDictionaryApi2RatelimitFeature
+from freedictionaryapi2_sdk.feature.retry_feature import FreeDictionaryApi2RetryFeature
 from freedictionaryapi2_sdk.feature.test_feature import FreeDictionaryApi2TestFeature
+from freedictionaryapi2_sdk.feature.timeout_feature import FreeDictionaryApi2TimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: FreeDictionaryApi2BaseFeature(),
+    "ratelimit": lambda: FreeDictionaryApi2RatelimitFeature(),
+    "retry": lambda: FreeDictionaryApi2RetryFeature(),
     "test": lambda: FreeDictionaryApi2TestFeature(),
+    "timeout": lambda: FreeDictionaryApi2TimeoutFeature(),
 }
 
 

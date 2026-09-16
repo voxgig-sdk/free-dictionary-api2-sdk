@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "entry": {
           "active": true,
@@ -97,6 +161,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /entries/{language}/{word}",
+                    "json": "{\"parameters\":[{\"deprecated\":false,\"description\":\"ISO 639-1/639-3 (2 or 3 letter) language code for word lookup, or \\\"all\\\" to retrieve\\nentries across all available languages.\",\"explode\":true,\"in\":\"path\",\"name\":\"language\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"deprecated\":false,\"description\":\"Word to retrieve entries for.\",\"explode\":true,\"in\":\"path\",\"name\":\"word\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"deprecated\":false,\"description\":\"Whether to include translations of the word to other languages.\",\"explode\":true,\"in\":\"query\",\"name\":\"translations\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"deprecated\":false,\"description\":\"Whether to pretty-print the JSON response.\",\"explode\":true,\"in\":\"query\",\"name\":\"pretty\",\"required\":false,\"schema\":{\"type\":\"boolean\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json; charset=utf-8\":{\"schema\":{\"description\":\"A collection of dictionary entries for a word in different languages.\",\"properties\":{\"entries\":{\"description\":\"All dictionary entries for this word in different languages and contexts.\",\"items\":{\"description\":\"A dictionary entry for a word in one specific language.\",\"properties\":{\"antonyms\":{\"description\":\"Words that mean the opposite of this word (for the whole entry).\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"forms\":{\"description\":\"Different forms of this word (like plural, past tense).\",\"items\":{\"description\":\"A different form of the word (like plural, past tense, etc.).\",\"properties\":{\"tags\":{\"description\":\"Labels describing what kind of form this is (plural, past tense, etc.).\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"word\":{\"description\":\"The different form of this word.\",\"type\":\"string\"}},\"required\":[\"word\",\"tags\"],\"title\":\"Form\",\"type\":\"object\"},\"type\":\"array\"},\"language\":{\"allOf\":[{\"description\":\"Information about a language.\",\"properties\":{\"code\":{\"description\":\"ISO 639-1/639-3 (2 or 3 letter) language code.\",\"type\":\"string\"},\"name\":{\"description\":\"The full name of this language in English.\",\"type\":\"string\"}},\"required\":[\"code\",\"name\"],\"title\":\"Language\",\"type\":\"object\"},{\"description\":\"Which language this entry is for.\"}],\"description\":\"Which language this entry is for.\"},\"partOfSpeech\":{\"description\":\"What type of word this is (noun, verb, adjective, etc.).\",\"type\":\"string\"},\"pronunciations\":{\"description\":\"How to pronounce this word.\",\"items\":{\"description\":\"How to pronounce a word using phonetic symbols.\",\"properties\":{\"tags\":{\"description\":\"Labels describing this pronunciation (like dialect or formality level).\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"text\":{\"description\":\"The pronunciation written in the specified notation.\",\"type\":\"string\"},\"type\":{\"allOf\":[{\"enum\":[\"ipa\",\"enpr\"],\"type\":\"string\"},{\"description\":\"The type of pronunciation (like \\\"ipa\\\", \\\"enpr\\\", etc.).\"}],\"description\":\"The type of pronunciation (like \\\"ipa\\\", \\\"enpr\\\", etc.).\"}},\"required\":[\"type\",\"text\",\"tags\"],\"title\":\"Pronunciation\",\"type\":\"object\"},\"type\":\"array\"},\"senses\":{\"description\":\"All the different meanings of this word.\",\"items\":{\"description\":\"One specific meaning of a word with examples and related information.\",\"properties\":{\"antonyms\":{\"description\":\"Words that mean the opposite of this specific meaning.\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"definition\":{\"description\":\"What this meaning of the word means.\",\"type\":\"string\"},\"examples\":{\"description\":\"Example sentences showing how to use this meaning.\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"quotes\":{\"description\":\"Real quotes from books or other sources using this word.\",\"items\":{\"description\":\"A quote from a book or other source showing how the word is used.\",\"properties\":{\"reference\":{\"description\":\"Where this quote came from (book title, author, etc.).\",\"type\":\"string\"},\"text\":{\"description\":\"The actual quote text.\",\"type\":\"string\"}},\"required\":[\"text\",\"reference\"],\"title\":\"Quote\",\"type\":\"object\"},\"type\":\"array\"},\"subsenses\":{\"description\":\"More specific meanings within this meaning.\",\"items\":{\"description\":\"One specific meaning of a word with examples and related information.\",\"properties\":\"[Circular *paths./entries/{language}/{word}.get.responses.200.content.application/json; charset=utf-8.schema.properties.entries.items.properties.senses.items.properties]\",\"required\":[\"definition\",\"tags\",\"examples\",\"quotes\",\"synonyms\",\"antonyms\",\"subsenses\"],\"title\":\"Sense\",\"type\":\"object\"},\"type\":\"array\"},\"synonyms\":{\"description\":\"Words that mean the same as this specific meaning.\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"tags\":{\"description\":\"Labels about how this meaning is used (formal, old-fashioned, technical, etc.).\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"translations\":{\"description\":\"How to say this meaning in other languages.\",\"items\":{\"description\":\"How to say a word in another language.\",\"properties\":{\"language\":{\"allOf\":[{\"description\":\"Information about a language.\",\"properties\":{\"code\":{\"description\":\"ISO 639-1/639-3 (2 or 3 letter) language code.\",\"type\":\"string\"},\"name\":{\"description\":\"The full name of this language in English.\",\"type\":\"string\"}},\"required\":[\"code\",\"name\"],\"title\":\"Language\",\"type\":\"object\"},{\"description\":\"Which language this translation is in.\"}],\"description\":\"Which language this translation is in.\"},\"word\":{\"description\":\"The word or phrase in that language.\",\"type\":\"string\"}},\"required\":[\"language\",\"word\"],\"title\":\"Translation\",\"type\":\"object\"},\"type\":\"array\"}},\"required\":[\"definition\",\"tags\",\"examples\",\"quotes\",\"synonyms\",\"antonyms\",\"subsenses\"],\"title\":\"Sense\",\"type\":\"object\"},\"type\":\"array\"},\"synonyms\":{\"description\":\"Words that mean the same thing as this word (for the whole entry).\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"required\":[\"language\",\"partOfSpeech\",\"pronunciations\",\"forms\",\"senses\",\"synonyms\",\"antonyms\"],\"title\":\"Entry\",\"type\":\"object\"},\"type\":\"array\"},\"source\":{\"allOf\":[{\"description\":\"Information about where the dictionary data comes from.\",\"properties\":{\"license\":{\"allOf\":[{\"description\":\"Legal terms for using the dictionary data.\",\"properties\":{\"name\":{\"description\":\"Name of the license.\",\"type\":\"string\"},\"url\":{\"description\":\"Link to read the full license terms.\",\"type\":\"string\"}},\"required\":[\"name\",\"url\"],\"title\":\"License\",\"type\":\"object\"},{\"description\":\"Legal information about how you can use this data.\"}],\"description\":\"Legal information about how you can use this data.\"},\"url\":{\"description\":\"Link to the original Wiktionary page.\",\"type\":\"string\"}},\"required\":[\"url\",\"license\"],\"title\":\"Source\",\"type\":\"object\"},{\"description\":\"Information about where this data comes from and how it can be used.\"}],\"description\":\"Information about where this data comes from and how it can be used.\"},\"word\":{\"description\":\"The word being looked up.\",\"type\":\"string\"}},\"required\":[\"word\",\"entries\",\"source\"],\"title\":\"EntriesByLanguageAndWord\",\"type\":\"object\"}}},\"description\":\"\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/entries/{language}/{word}",
@@ -161,6 +231,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /languages",
+                    "json": "{\"parameters\":[{\"deprecated\":false,\"description\":\"Whether to pretty-print the JSON response.\",\"explode\":true,\"in\":\"query\",\"name\":\"pretty\",\"required\":false,\"schema\":{\"type\":\"boolean\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json; charset=utf-8\":{\"schema\":{\"items\":{\"description\":\"Information about a language with the number of words in the dictionary.\",\"properties\":{\"code\":{\"description\":\"ISO 639-1/639-3 (2 or 3 letter) language code.\",\"type\":\"string\"},\"name\":{\"description\":\"The full name of this language in English.\",\"type\":\"string\"},\"words\":{\"description\":\"The number of words in the dictionary for this language.\",\"format\":\"uint32\",\"type\":\"integer\"}},\"required\":[\"code\",\"name\",\"words\"],\"title\":\"LanguageWithWords\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/languages",
@@ -188,13 +264,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -284,6 +570,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -378,6 +760,48 @@
         "website": "https://freedictionaryapi.com"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -932,6 +1356,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -973,7 +1398,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

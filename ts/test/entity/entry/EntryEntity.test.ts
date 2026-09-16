@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { FreeDictionaryApi2SDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('EntryEntity', async () => {
 
     const live = 'TRUE' === process.env.FREE_DICTIONARY_API2_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'entry.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'entry.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set FREE_DICTIONARY_API2_TEST_ENTRY_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":0}],"id":{"field":"id","from":{"word":"word"},"name":"id","parts":["language","word"],"sep":"/"},"name":"entry","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"language","orig":"language","reqd":true,"type":"`$STRING`","index$":0},{"active":true,"kind":"param","name":"word","orig":"word","reqd":true,"type":"`$STRING`","index$":1}],"query":[{"active":true,"kind":"query","name":"pretty","orig":"pretty","reqd":false,"type":"`$BOOLEAN`","index$":0},{"active":true,"kind":"query","name":"translation","orig":"translation","reqd":false,"type":"`$BOOLEAN`","index$":1}]},"contract":{"id":"GET /entries/{language}/{word}","json":"{\"parameters\":[{\"deprecated\":false,\"description\":\"ISO 639-1/639-3 (2 or 3 letter) language code for word lookup, or \\\"all\\\" to retrieve\\nentries across all available languages.\",\"explode\":true,\"in\":\"path\",\"name\":\"language\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"deprecated\":false,\"description\":\"Word to retrieve entries for.\",\"explode\":true,\"in\":\"path\",\"name\":\"word\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"deprecated\":false,\"description\":\"Whether to include translations of the word to other languages.\",\"explode\":true,\"in\":\"query\",\"name\":\"translations\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"deprecated\":false,\"description\":\"Whether to pretty-print the JSON response.\",\"explode\":true,\"in\":\"query\",\"name\":\"pretty\",\"required\":false,\"schema\":{\"type\":\"boolean\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json; charset=utf-8\":{\"schema\":{\"description\":\"A collection of dictionary entries for a word in different languages.\",\"properties\":{\"entries\":{\"description\":\"All dictionary entries for this word in different languages and contexts.\",\"items\":{\"description\":\"A dictionary entry for a word in one specific language.\",\"properties\":{\"antonyms\":{\"description\":\"Words that mean the opposite of this word (for the whole entry).\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"forms\":{\"description\":\"Different forms of this word (like plural, past tense).\",\"items\":{\"description\":\"A different form of the word (like plural, past tense, etc.).\",\"properties\":{\"tags\":{\"description\":\"Labels describing what kind of form this is (plural, past tense, etc.).\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"word\":{\"description\":\"The different form of this word.\",\"type\":\"string\"}},\"required\":[\"word\",\"tags\"],\"title\":\"Form\",\"type\":\"object\"},\"type\":\"array\"},\"language\":{\"allOf\":[{\"description\":\"Information about a language.\",\"properties\":{\"code\":{\"description\":\"ISO 639-1/639-3 (2 or 3 letter) language code.\",\"type\":\"string\"},\"name\":{\"description\":\"The full name of this language in English.\",\"type\":\"string\"}},\"required\":[\"code\",\"name\"],\"title\":\"Language\",\"type\":\"object\"},{\"description\":\"Which language this entry is for.\"}],\"description\":\"Which language this entry is for.\"},\"partOfSpeech\":{\"description\":\"What type of word this is (noun, verb, adjective, etc.).\",\"type\":\"string\"},\"pronunciations\":{\"description\":\"How to pronounce this word.\",\"items\":{\"description\":\"How to pronounce a word using phonetic symbols.\",\"properties\":{\"tags\":{\"description\":\"Labels describing this pronunciation (like dialect or formality level).\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"text\":{\"description\":\"The pronunciation written in the specified notation.\",\"type\":\"string\"},\"type\":{\"allOf\":[{\"enum\":[\"ipa\",\"enpr\"],\"type\":\"string\"},{\"description\":\"The type of pronunciation (like \\\"ipa\\\", \\\"enpr\\\", etc.).\"}],\"description\":\"The type of pronunciation (like \\\"ipa\\\", \\\"enpr\\\", etc.).\"}},\"required\":[\"type\",\"text\",\"tags\"],\"title\":\"Pronunciation\",\"type\":\"object\"},\"type\":\"array\"},\"senses\":{\"description\":\"All the different meanings of this word.\",\"items\":{\"description\":\"One specific meaning of a word with examples and related information.\",\"properties\":{\"antonyms\":{\"description\":\"Words that mean the opposite of this specific meaning.\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"definition\":{\"description\":\"What this meaning of the word means.\",\"type\":\"string\"},\"examples\":{\"description\":\"Example sentences showing how to use this meaning.\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"quotes\":{\"description\":\"Real quotes from books or other sources using this word.\",\"items\":{\"description\":\"A quote from a book or other source showing how the word is used.\",\"properties\":{\"reference\":{\"description\":\"Where this quote came from (book title, author, etc.).\",\"type\":\"string\"},\"text\":{\"description\":\"The actual quote text.\",\"type\":\"string\"}},\"required\":[\"text\",\"reference\"],\"title\":\"Quote\",\"type\":\"object\"},\"type\":\"array\"},\"subsenses\":{\"description\":\"More specific meanings within this meaning.\",\"items\":{\"description\":\"One specific meaning of a word with examples and related information.\",\"properties\":\"[Circular *paths./entries/{language}/{word}.get.responses.200.content.application/json; charset=utf-8.schema.properties.entries.items.properties.senses.items.properties]\",\"required\":[\"definition\",\"tags\",\"examples\",\"quotes\",\"synonyms\",\"antonyms\",\"subsenses\"],\"title\":\"Sense\",\"type\":\"object\"},\"type\":\"array\"},\"synonyms\":{\"description\":\"Words that mean the same as this specific meaning.\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"tags\":{\"description\":\"Labels about how this meaning is used (formal, old-fashioned, technical, etc.).\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"translations\":{\"description\":\"How to say this meaning in other languages.\",\"items\":{\"description\":\"How to say a word in another language.\",\"properties\":{\"language\":{\"allOf\":[{\"description\":\"Information about a language.\",\"properties\":{\"code\":{\"description\":\"ISO 639-1/639-3 (2 or 3 letter) language code.\",\"type\":\"string\"},\"name\":{\"description\":\"The full name of this language in English.\",\"type\":\"string\"}},\"required\":[\"code\",\"name\"],\"title\":\"Language\",\"type\":\"object\"},{\"description\":\"Which language this translation is in.\"}],\"description\":\"Which language this translation is in.\"},\"word\":{\"description\":\"The word or phrase in that language.\",\"type\":\"string\"}},\"required\":[\"language\",\"word\"],\"title\":\"Translation\",\"type\":\"object\"},\"type\":\"array\"}},\"required\":[\"definition\",\"tags\",\"examples\",\"quotes\",\"synonyms\",\"antonyms\",\"subsenses\"],\"title\":\"Sense\",\"type\":\"object\"},\"type\":\"array\"},\"synonyms\":{\"description\":\"Words that mean the same thing as this word (for the whole entry).\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"required\":[\"language\",\"partOfSpeech\",\"pronunciations\",\"forms\",\"senses\",\"synonyms\",\"antonyms\"],\"title\":\"Entry\",\"type\":\"object\"},\"type\":\"array\"},\"source\":{\"allOf\":[{\"description\":\"Information about where the dictionary data comes from.\",\"properties\":{\"license\":{\"allOf\":[{\"description\":\"Legal terms for using the dictionary data.\",\"properties\":{\"name\":{\"description\":\"Name of the license.\",\"type\":\"string\"},\"url\":{\"description\":\"Link to read the full license terms.\",\"type\":\"string\"}},\"required\":[\"name\",\"url\"],\"title\":\"License\",\"type\":\"object\"},{\"description\":\"Legal information about how you can use this data.\"}],\"description\":\"Legal information about how you can use this data.\"},\"url\":{\"description\":\"Link to the original Wiktionary page.\",\"type\":\"string\"}},\"required\":[\"url\",\"license\"],\"title\":\"Source\",\"type\":\"object\"},{\"description\":\"Information about where this data comes from and how it can be used.\"}],\"description\":\"Information about where this data comes from and how it can be used.\"},\"word\":{\"description\":\"The word being looked up.\",\"type\":\"string\"}},\"required\":[\"word\",\"entries\",\"source\"],\"title\":\"EntriesByLanguageAndWord\",\"type\":\"object\"}}},\"description\":\"\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/entries/{language}/{word}","segments":[{"lit":"entries"},{"var":"language"},{"var":"word"}],"select":{"exist":["language","pretty","translation","word"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[["entry"]]},"key$":"entry","name__orig":"entry","Name":"Entry","name_":"entry","name-":"entry","NAME":"ENTRY","index$":0}, {"active":true,"entity":"entry","key$":"BasicEntryFlow","kind":"basic","name":"BasicEntryFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"entry_ref01","srcdatavar":"entry_ref01_data","suffix":"_dt0"},"match":{"id":"entry01","language":"language01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-entry_ref01"}}],"index$":0}]}, 'Entry')
     }
     const client = setup.client
     const struct = setup.struct
@@ -110,13 +109,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['FREE_DICTIONARY_API2_TEST_ENTRY_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'FREE_DICTIONARY_API2_TEST_ENTRY_ENTID': idmap,
     'FREE_DICTIONARY_API2_TEST_LIVE': 'FALSE',
@@ -127,7 +119,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.FREE_DICTIONARY_API2_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['FREE_DICTIONARY_API2_TEST_ENTRY_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new FreeDictionaryApi2SDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -139,7 +137,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -152,7 +151,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.FREE_DICTIONARY_API2_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

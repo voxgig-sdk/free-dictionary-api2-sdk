@@ -16,5 +16,64 @@
     "language": {
       "language_ref01": {}
     }
+  },
+  "requests": {
+    "GET /languages": {
+      "provenance": "operation-contract",
+      "contract": {
+        "parameters": [
+          {
+            "deprecated": false,
+            "description": "Whether to pretty-print the JSON response.",
+            "explode": true,
+            "in": "query",
+            "name": "pretty",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "items": {
+                    "description": "Information about a language with the number of words in the dictionary.",
+                    "properties": {
+                      "code": {
+                        "description": "ISO 639-1/639-3 (2 or 3 letter) language code.",
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "The full name of this language in English.",
+                        "type": "string"
+                      },
+                      "words": {
+                        "description": "The number of words in the dictionary for this language.",
+                        "format": "uint32",
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "code",
+                      "name",
+                      "words"
+                    ],
+                    "title": "LanguageWithWords",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
