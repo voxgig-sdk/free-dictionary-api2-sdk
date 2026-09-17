@@ -1,4 +1,4 @@
 # Entity Models
 
-@"entry.aon"
-@"language.aon"
+@"./entry.aon"
+@"./language.aon"

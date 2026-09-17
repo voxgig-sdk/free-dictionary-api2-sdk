@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicEntryFlow.aon"
-@"BasicLanguageFlow.aon"
+@"./BasicEntryFlow.aon"
+@"./BasicLanguageFlow.aon"
