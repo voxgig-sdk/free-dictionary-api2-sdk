@@ -32,8 +32,6 @@ client = FreeDictionaryApi2SDK.new
 
 ### 3. Load an entry
 
-Entry is nested under language, so provide the `language`.
-
 ```ruby
 begin
   # load returns the ENTITY — call data_get for the Entry record (raises on error).

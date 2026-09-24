@@ -14,7 +14,7 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
@@ -123,12 +123,8 @@ import { FreeDictionaryApi2SDK } from '@voxgig-sdk/free-dictionary-api2-sdk'
 
 const client = new FreeDictionaryApi2SDK()
 
-
-// Load a specific entry (returns a Entry)
-const entry = await client.Entry().load({
-  language: 'example_language',
-  word: 'example_word',
-})
+// Load entry data (returns a Entry)
+const entry = await client.Entry().load()
 console.log(entry)
 ```
 
@@ -212,11 +208,8 @@ import sdk "github.com/voxgig-sdk/free-dictionary-api2-sdk/go"
 
 client := sdk.New()
 
-
-// Load a specific entry
-entry, err := client.Entry(nil).Load(
-    map[string]any{"language": "example_language", "word": "example_word"}, nil,
-)
+// Load entry data
+entry, err := client.Entry(nil).Load(map[string]any{"language": "example_language", "word": "example_word"}, nil)
 if err != nil {
     panic(err)
 }

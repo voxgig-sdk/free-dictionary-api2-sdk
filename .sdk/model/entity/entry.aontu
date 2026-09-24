@@ -1,0 +1,106 @@
+# Entity: entry
+
+main: kit: entity: entry: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    from: {
+      word: "word"
+    }
+    name: "id"
+    parts: [
+      "language"
+      "word"
+    ]
+    sep: "/"
+  }
+
+  name: "entry"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /entries/{language}/{word}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "language"
+                or: "language"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "word"
+                or: "word"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "pretty"
+                or: "pretty"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "translation"
+                or: "translation"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/entries/{language}/{word}"
+          q: {
+            exist: [
+              "language"
+              "pretty"
+              "translation"
+              "word"
+            ]
+          }
+          s: [
+            {
+              lit: "entries"
+            }
+            {
+              var: "language"
+            }
+            {
+              var: "word"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

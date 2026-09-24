@@ -35,15 +35,11 @@ const client = new FreeDictionaryApi2SDK()
 
 ### 3. Load an entry
 
-Entry is nested under language, so provide the `language`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const entry = await client.Entry().load({
-    language: 'example_language',
-    word: 'example_word',
-  })
+  const entry = await client.Entry().load({ language: 'example_language', word: 'example_word' })
   console.log(entry)
 } catch (err) {
   console.error('load failed:', err)

@@ -100,6 +100,7 @@ module FreeDictionaryApi2Config
           "fields" => [
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
           ],
@@ -122,38 +123,6 @@ module FreeDictionaryApi2Config
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "language",
-                        "orig" => "language",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "param",
-                        "name" => "word",
-                        "orig" => "word",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$BOOLEAN`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "translation",
-                        "orig" => "translation",
-                        "type" => "`$BOOLEAN`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/entries/{language}/{word}",
@@ -168,6 +137,48 @@ module FreeDictionaryApi2Config
                       "var" => "word",
                     },
                   ],
+                  "parts" => [
+                    "entries",
+                    "{language}",
+                    "{word}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "language",
+                        "orig" => "language",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "word",
+                        "orig" => "word",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "translation",
+                        "orig" => "translation",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "language",
@@ -176,25 +187,12 @@ module FreeDictionaryApi2Config
                       "word",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "entries",
-                    "{language}",
-                    "{word}",
-                  ],
                 },
               ],
             },
           },
           "relations" => {
-            "ancestors" => [
-              [
-                "entry",
-              ],
-            ],
+            "ancestors" => [],
           },
         },
         "language" => {
@@ -206,16 +204,6 @@ module FreeDictionaryApi2Config
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "pretty",
-                        "orig" => "pretty",
-                        "type" => "`$BOOLEAN`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/languages",
@@ -224,18 +212,29 @@ module FreeDictionaryApi2Config
                       "lit" => "languages",
                     },
                   ],
+                  "parts" => [
+                    "languages",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "pretty",
+                        "orig" => "pretty",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "pretty",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "languages",
-                  ],
                 },
               ],
             },

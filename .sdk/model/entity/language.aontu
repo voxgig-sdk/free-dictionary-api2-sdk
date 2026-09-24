@@ -1,0 +1,55 @@
+# Entity: language
+
+main: kit: entity: language: {
+
+  alias: field: {}
+
+  name: "language"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /languages"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "pretty"
+                or: "pretty"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/languages"
+          q: {
+            exist: [
+              "pretty"
+            ]
+          }
+          s: [
+            {
+              lit: "languages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

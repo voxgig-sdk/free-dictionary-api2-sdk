@@ -88,6 +88,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "id",
+            ["title"] = "Id",
             ["type"] = "`$STRING`",
           },
         },
@@ -110,38 +111,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "language",
-                      ["orig"] = "language",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "word",
-                      ["orig"] = "word",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "pretty",
-                      ["orig"] = "pretty",
-                      ["type"] = "`$BOOLEAN`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "translation",
-                      ["orig"] = "translation",
-                      ["type"] = "`$BOOLEAN`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/entries/{language}/{word}",
@@ -156,6 +125,48 @@ local function make_config()
                     ["var"] = "word",
                   },
                 },
+                ["parts"] = {
+                  "entries",
+                  "{language}",
+                  "{word}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "language",
+                      ["orig"] = "language",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                    {
+                      ["name"] = "word",
+                      ["orig"] = "word",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "pretty",
+                      ["orig"] = "pretty",
+                      ["type"] = "`$BOOLEAN`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "translation",
+                      ["orig"] = "translation",
+                      ["type"] = "`$BOOLEAN`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "language",
@@ -164,25 +175,12 @@ local function make_config()
                     "word",
                   },
                 },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "entries",
-                  "{language}",
-                  "{word}",
-                },
               },
             },
           },
         },
         ["relations"] = {
-          ["ancestors"] = {
-            {
-              "entry",
-            },
-          },
+          ["ancestors"] = {},
         },
       },
       ["language"] = {
@@ -194,16 +192,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "pretty",
-                      ["orig"] = "pretty",
-                      ["type"] = "`$BOOLEAN`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/languages",
@@ -212,17 +200,28 @@ local function make_config()
                     ["lit"] = "languages",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "pretty",
-                  },
+                ["parts"] = {
+                  "languages",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "languages",
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "pretty",
+                      ["orig"] = "pretty",
+                      ["type"] = "`$BOOLEAN`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "pretty",
+                  },
                 },
               },
             },

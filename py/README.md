@@ -38,7 +38,6 @@ client = FreeDictionaryApi2SDK()
 
 ### 3. Load an entry
 
-Entry is nested under language, so provide the `language`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python

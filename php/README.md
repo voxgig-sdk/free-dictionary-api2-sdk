@@ -33,8 +33,6 @@ $client = new FreeDictionaryApi2SDK();
 
 ### 3. Load an entry
 
-Entry is nested under language, so provide the `language`.
-
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the Entry record (throws on error).

@@ -1,7 +1,7 @@
 // Typed models for the FreeDictionaryApi2 SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,7 +14,6 @@ import (
 
 // Entry is the typed data model for the entry entity.
 type Entry struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // EntryLoadMatch is the typed request payload for Entry.LoadTyped.
